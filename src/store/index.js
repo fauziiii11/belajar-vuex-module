@@ -2,6 +2,9 @@ import { createStore } from "vuex";
 import donatur from "./modules/donatur";
 import clients from "./modules/clients";
 import transaksi from "./modules/transaksi";
+import users from "./modules/user";
+import quran from "./modules/quran";
+
 
 const store = createStore({
     state: {
@@ -11,6 +14,9 @@ const store = createStore({
         donatur,
         clients,
         transaksi,
+        users,
+        quran,
+        
     },
 });
 
