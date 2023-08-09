@@ -4,6 +4,8 @@ import clients from "./modules/clients";
 import transaksi from "./modules/transaksi";
 import users from "./modules/user";
 import quran from "./modules/quran";
+import product  from "./modules/product";
+import kategori from "./modules/kategori";
 
 
 const store = createStore({
@@ -16,6 +18,8 @@ const store = createStore({
         transaksi,
         users,
         quran,
+        product,
+        kategori,
         
     },
 });
