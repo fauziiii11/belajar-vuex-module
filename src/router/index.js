@@ -5,6 +5,10 @@ import Quran from "../views/Quran.vue";
 import Product from "../views/Product.vue";
 import SingleProduct from "../views/SingleProduct.vue";
 import Kategori from "../views/Kategori.vue";
+import Login from "../views/Login.vue";
+import store from "../store";
+import Filter from "../views/Filter.vue";
+
 
 const routes = [
     {
@@ -33,6 +37,17 @@ const routes = [
         component: Kategori,
     },
     {
+        path: "/kategori/:kategori",
+        name: "FilterKategori",
+        component: Filter,
+    },
+    {
+        path: "/login",
+        name: "Login",
+        component: Login,
+        meta: { requireGuest: true},
+    },
+    {
         path: "/product/:id",
         name: "SingleProduct",
         component: SingleProduct,
@@ -42,6 +57,14 @@ const routes = [
 const router = createRouter({
     history: createWebHashHistory(),
     routes,
+});
+
+router.beforeEach((to, from, next) => {
+    if (to.meta.requireGuest && store.getters["auth/isAuthenticated"]) {
+        next("/");
+    } else {
+        next();
+    }
 });
 
 export default router;

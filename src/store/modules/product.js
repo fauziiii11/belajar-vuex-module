@@ -1,5 +1,6 @@
 import axios from "axios";
 
+
 const product = {
     namespaced: true,
     state : {
@@ -15,6 +16,12 @@ const product = {
             console.log("Product:", product);
             return product
         },
+
+        // get filter
+        getProductByKategori: (state) => (productkategori) => {
+            const product = state.productData.filter((p) => p.kategori == productkategori)
+            return product
+        }
     },
     actions: {
         async fetchProduct ({ commit }) {
@@ -29,6 +36,8 @@ const product = {
             }
         },
 
+
+
         // get single product
         async fetchSingleProduct({commit}, productId) {
             try {
@@ -41,6 +50,19 @@ const product = {
                 console.log(error);
             }
         },
+
+        //get product
+        async fetchFilterProduct({commit}, productkategori) {
+            try {
+                const response = await axios.get(
+                    `https://fakestoreapi.com/products/category/${productkategori}`
+                );
+                commit("SET_FILTER_PRODUCT", response.data);
+            } catch (error) {
+                alert(error);
+                console.log(error);
+            }
+        },
     },
     mutations: {
         SET_PRODUCT(state, product) {
@@ -48,6 +70,9 @@ const product = {
         },
         SET_SINGLE_PRODUCT(state, product) {
             state.singleProduct = product;
+        },
+        SET_FILTER_PRODUCT(state, product) {
+            state.filterProduct = product;
         },
     },
 };

@@ -6,6 +6,7 @@ import users from "./modules/user";
 import quran from "./modules/quran";
 import product  from "./modules/product";
 import kategori from "./modules/kategori";
+import auth from "./modules/auth";
 
 
 const store = createStore({
@@ -20,6 +21,7 @@ const store = createStore({
         quran,
         product,
         kategori,
+        auth,
         
     },
 });

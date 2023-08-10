@@ -7,6 +7,7 @@ const kategori = {
     },
     getters: {
         getKategori: (state) => state.kategoriData,
+        
     },
     actions: {
         async fetchKategori ({ commit }) {

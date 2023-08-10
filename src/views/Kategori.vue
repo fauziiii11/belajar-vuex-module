@@ -13,11 +13,12 @@
             </svg>
           </div>
         </div>
-
-        <div class="mt-1 p-2">
-          <h2 class="text-slate-700">{{ kategori }}</h2>
-
-        </div>
+        <button class="group mx-auto mb-2 flex h-10 w-10/12 items-stretch overflow-hidden rounded-md text-gray-600">
+          <router-link :to="{name: 'FilterKategori',params: { kategori: kategori }}">
+          <div class="flex w-full items-center justify-center bg-green-300 text-l uppercase transition group-hover:bg-emerald-900 group-hover:text-white font-extrabold"> {{ kategori }}</div>
+        </router-link>
+        </button> 
+        
 
       </a>
     </article>
@@ -31,6 +32,7 @@
 import { mapGetters, mapActions } from 'vuex';
 
 export default {
+
     computed: {
         ...mapGetters('kategori', ['getKategori']),
     },

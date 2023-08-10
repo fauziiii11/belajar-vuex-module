@@ -1,12 +1,12 @@
-   <template>
+<template>
     <section class="bg-white py-12 text-gray-700 sm:py-16 lg:py-20">
   <div class="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
     <div class="mx-auto max-w-md text-center">
-      <h2 class="font-serif text-2xl font-bold sm:text-3xl text-green-700">PRODUCT</h2>
+      <h2 class="font-serif text-2xl font-bold sm:text-3xl text-green-700">Product</h2>
     </div>
 
     <div class="mt-10 grid grid-cols-2 gap-6 sm:grid-cols-4 sm:gap-4 lg:mt-16">
-        <div v-for="product in getProduct" :key="product.id">
+        <div v-for="product in filteredProducts" :key="product.id">
       
       <article class="relative flex flex-col overflow-hidden rounded-lg border">
         <div class="aspect-square overflow-hidden">
@@ -58,20 +58,16 @@
     
     export default {
         computed: {
-            ...mapGetters('product', ['getProduct']),
+            ...mapGetters('product', ['getProductByKategori']),
+            filteredProducts() {
+                return this.getProductByKategori(this.$route.params.kategori);
+            },
         },
         methods: {
-            ...mapActions('product', ['fetchProduct']),
-            getImage(imageURL) {
-                return {
-                    'src': `${imageURL}`,
-                    'background-size': 'cover',
-                    'background-position': 'center'
-                }
-            }
+            ...mapActions('product', ['fetchFilterProduct']),
         },
         created() {
-            this.fetchProduct();
+            this.fetchFilterProduct();
         },
     }
     </script>

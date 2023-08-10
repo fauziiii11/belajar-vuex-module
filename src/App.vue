@@ -53,11 +53,30 @@
           <router-link to="/product">Product</router-link>
         </li>
         <li>
-          <router-link to="/kategori">kategori</router-link>
+          <router-link to="/kategori">Kategori</router-link>
         </li>
+        <li v-if="isAuthenticated">
+                <button @click="logout">Logout</button>
+        </li>
+            <li v-else>
+                <router-link to="/login">Login</router-link>
+            </li>
       </ul>
     </div>
   </div>
 </nav>
   <router-view />
 </template>
+
+<script>
+import { mapActions, mapGetters } from 'vuex';
+
+export default {
+    computed: {
+        ...mapGetters('auth', ['isAuthenticated']),
+    },
+    methods: {
+        ...mapActions('auth', ['logout']),
+    },
+};
+</script>
