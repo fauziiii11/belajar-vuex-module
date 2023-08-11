@@ -43,9 +43,7 @@
         <li>
           <router-link to="/">Home</router-link>
         </li>
-        <li>
-          <router-link to="/users">User</router-link>
-        </li>
+       
         <li>
           <router-link to="/quran">Quran</router-link>
         </li>

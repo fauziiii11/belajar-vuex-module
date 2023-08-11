@@ -7,6 +7,7 @@ import quran from "./modules/quran";
 import product  from "./modules/product";
 import kategori from "./modules/kategori";
 import auth from "./modules/auth";
+import notification from "./modules/notification";
 
 
 const store = createStore({
@@ -22,6 +23,7 @@ const store = createStore({
         product,
         kategori,
         auth,
+        notification,
         
     },
 });
